@@ -20,7 +20,6 @@ namespace WindowsFormsParusnik
         public bool Flag { private set; get; }
         public Color DopeColor { protected set; get; }
 
-
         public Parusnik(Color mainColor, Color dopeColor, bool parus, bool flag) : base(mainColor)
 
         {
@@ -55,7 +54,5 @@ namespace WindowsFormsParusnik
         {
             DopeColor = color;
         }
-
-
     }
 }
