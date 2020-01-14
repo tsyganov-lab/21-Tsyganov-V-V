@@ -51,9 +51,9 @@ namespace WindowsFormsParusnik
         }
         private void buttonTake_Click(object sender, EventArgs e)
         {
-            if (maskedTextBox1.Text != "")
+            if (maskedTextBoxPlace.Text != "")
             {
-                var par = harbor - Convert.ToInt32(maskedTextBox1.Text);
+                var par = harbor - Convert.ToInt32(maskedTextBoxPlace.Text);
                 if (par != null)
                 {
                     Bitmap bmp = new Bitmap(pictureBoxTake.Width,

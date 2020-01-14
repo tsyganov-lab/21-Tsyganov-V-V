@@ -34,9 +34,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBoxTake = new System.Windows.Forms.PictureBox();
             this.buttonTake = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelPlace = new System.Windows.Forms.Label();
+            this.maskedTextBoxPlace = new System.Windows.Forms.MaskedTextBox();
+            this.labelTake = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMVeh)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
@@ -74,9 +74,9 @@
             // 
             this.groupBox1.Controls.Add(this.pictureBoxTake);
             this.groupBox1.Controls.Add(this.buttonTake);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.maskedTextBox1);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.labelPlace);
+            this.groupBox1.Controls.Add(this.maskedTextBoxPlace);
+            this.groupBox1.Controls.Add(this.labelTake);
             this.groupBox1.Location = new System.Drawing.Point(549, 131);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(104, 172);
@@ -101,31 +101,31 @@
             this.buttonTake.UseVisualStyleBackColor = true;
             this.buttonTake.Click += new System.EventHandler(this.buttonTake_Click);
             // 
-            // label2
+            // labelPlace
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Место:";
+            this.labelPlace.AutoSize = true;
+            this.labelPlace.Location = new System.Drawing.Point(17, 43);
+            this.labelPlace.Name = "labelPlace";
+            this.labelPlace.Size = new System.Drawing.Size(42, 13);
+            this.labelPlace.TabIndex = 2;
+            this.labelPlace.Text = "Место:";
             // 
-            // maskedTextBox1
+            // maskedTextBoxPlace
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(62, 40);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(30, 20);
-            this.maskedTextBox1.TabIndex = 1;
+            this.maskedTextBoxPlace.Location = new System.Drawing.Point(62, 40);
+            this.maskedTextBoxPlace.Name = "maskedTextBoxPlace";
+            this.maskedTextBoxPlace.Size = new System.Drawing.Size(30, 20);
+            this.maskedTextBoxPlace.TabIndex = 1;
             // 
-            // label1
+            // labelTake
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Забрать\r\nморское т/c";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelTake.AutoSize = true;
+            this.labelTake.Location = new System.Drawing.Point(17, 11);
+            this.labelTake.Name = "labelTake";
+            this.labelTake.Size = new System.Drawing.Size(70, 26);
+            this.labelTake.TabIndex = 0;
+            this.labelTake.Text = "Забрать\r\nморское т/c";
+            this.labelTake.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormHarbor
             // 
@@ -154,8 +154,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBoxTake;
         private System.Windows.Forms.Button buttonTake;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelPlace;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxPlace;
+        private System.Windows.Forms.Label labelTake;
     }
 }
