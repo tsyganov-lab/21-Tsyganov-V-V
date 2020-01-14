@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using NLog;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace WindowsFormsParusnik
@@ -23,9 +19,15 @@ namespace WindowsFormsParusnik
         /// Количество уровней-парковок
         /// </summary>
         private const int countLevel = 5;
+        /// <summary>
+        /// Логгер
+        /// </summary>
+        private Logger logger;
+
         public FormHarbor()
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
             harbor = new MultiLevelHarbor(countLevel, pictureBoxMVeh.Width,
                 pictureBoxMVeh.Height);
             //заполнение listBox
@@ -69,25 +71,33 @@ namespace WindowsFormsParusnik
             {
                 if (maskedTextBoxPlace.Text != "")
                 {
-                    var par = harbor[listBoxLevels.SelectedIndex] -
-                        Convert.ToInt32(maskedTextBoxPlace.Text);
-                    if (par != null)
+                    try
                     {
-                        Bitmap bmp = new Bitmap(pictureBoxTake.Width,
-                            pictureBoxTake.Height);
+                        var par = harbor[listBoxLevels.SelectedIndex] -
+                            Convert.ToInt32(maskedTextBoxPlace.Text);
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        par.SetPosition(5, 5, pictureBoxTake.Width,
-                            pictureBoxTake.Height);
+                        par.SetPosition(5, 5, pictureBoxTake.Width, pictureBoxTake.Height);
                         par.DrawMVeh(gr);
                         pictureBoxTake.Image = bmp;
+                        logger.Info("Изъято водное т/с с места " + maskedTextBoxPlace.Text);
+                        Draw();
                     }
-                    else
+                    catch (HarborNorFoundException ex)
                     {
-                        Bitmap bmp = new Bitmap(pictureBoxTake.Width,
-                        pictureBoxTake.Height);
+                        MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
                         pictureBoxTake.Image = bmp;
+                        logger.Debug("Не найдено водное т/с на месте " + maskedTextBoxPlace.Text);
                     }
-                    Draw();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        logger.Debug("Неизвестная ошибка");
+                    }
+
                 }
             }
         }
@@ -110,15 +120,27 @@ namespace WindowsFormsParusnik
         {
             if (par != null && listBoxLevels.SelectedIndex > -1)
             {
-                int place = harbor[listBoxLevels.SelectedIndex] + par;
-                if (place > -1)
+                try
                 {
+                    int place = harbor[listBoxLevels.SelectedIndex] + par;
+                    logger.Info("Добавлено т/c " + par.ToString() + " на место "
+                        + place);
                     Draw();
                 }
-                else
+                catch (HarborOverflowException ex)
                 {
-                    MessageBox.Show("Т/с не удалось поставить");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    logger.Debug("Ошибка при добавлении т/c, место занято ");
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Debug("Неизвестная ошибка");
+
+                }
+
             }
         }
 
@@ -126,37 +148,52 @@ namespace WindowsFormsParusnik
         {
             if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (harbor.SaveData(saveFileDialog1.FileName))
+                try
                 {
+                    harbor.SaveData(saveFileDialog1.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialog1.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Debug("Неизвестная ошибка");
                 }
+
             }
 
         }
 
         private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if (harbor.LoadData(openFileDialog1.FileName))
+                try
                 {
+                    harbor.LoadData(openFileDialog1.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                    MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog1.FileName);
                 }
-                else
+                catch (HarborOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                    logger.Debug("Занятое место");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Debug("Неизвестная ошибка");
                 }
                 Draw();
+
             }
 
         }
+
     }
 }

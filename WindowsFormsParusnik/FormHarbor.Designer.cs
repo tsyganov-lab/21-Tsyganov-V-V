@@ -53,7 +53,7 @@
             // 
             this.pictureBoxMVeh.Location = new System.Drawing.Point(4, 27);
             this.pictureBoxMVeh.Name = "pictureBoxMVeh";
-            this.pictureBoxMVeh.Size = new System.Drawing.Size(539, 380);
+            this.pictureBoxMVeh.Size = new System.Drawing.Size(539, 394);
             this.pictureBoxMVeh.TabIndex = 0;
             this.pictureBoxMVeh.TabStop = false;
             // 
@@ -155,14 +155,14 @@
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // загрузитьToolStripMenuItem
             // 
             this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
-            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.загрузитьToolStripMenuItem.Text = "Загрузить";
             this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
             // 
@@ -179,7 +179,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 410);
+            this.ClientSize = new System.Drawing.Size(658, 433);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBox1);

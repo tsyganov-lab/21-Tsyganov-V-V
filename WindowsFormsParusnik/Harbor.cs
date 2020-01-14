@@ -56,7 +56,7 @@ namespace WindowsFormsParusnik
         {
             if (p._places.Count == p._maxCount)
             {
-                return -1;
+                throw new HarborOverflowException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -88,8 +88,7 @@ namespace WindowsFormsParusnik
                 p._places.Remove(index);
                 return par;
             }
-
-            return null;
+            throw new HarborNorFoundException(index);
         }
         /// <summary>
         /// Метод проверки заполнености парковочного места (ячейки массива)
@@ -143,7 +142,7 @@ namespace WindowsFormsParusnik
                 {
                     return _places[ind];
                 }
-                return null;
+                throw new HarborNorFoundException(ind);
             }
             set
             {
@@ -153,6 +152,11 @@ namespace WindowsFormsParusnik
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5
                     * _placeSizeHeight + 15, PictureWidth, PictureHeight);
                 }
+                else
+                {
+                    throw new HarborOccupiedPlaceException(ind);
+                }
+
             }
         }
 
