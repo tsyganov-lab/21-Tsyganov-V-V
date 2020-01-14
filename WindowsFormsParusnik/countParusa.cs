@@ -18,7 +18,6 @@ namespace WindowsFormsParusnik
         public _countParusa parusCount { private get; set; }
         float posx;
         float posy;
-
         public countParusa(_countParusa numberOfParusa, float _startPosX, float _startPosY)
         {
             parusCount = numberOfParusa;

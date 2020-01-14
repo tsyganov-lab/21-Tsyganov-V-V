@@ -53,7 +53,8 @@ namespace WindowsFormsParusnik
         public _countParusa cParusa { private set; get; }
 
 
-        public Parusnik(Color mainColor, Color dopcolor, bool parus, bool flag, _countParusa countparusa)
+        public Parusnik(Color mainColor, Color dopcolor, bool parus, bool flag,
+            _countParusa countparusa)
 
         {
             MainColor = mainColor;
