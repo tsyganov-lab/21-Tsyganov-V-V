@@ -67,8 +67,8 @@ namespace WindowsFormsParusnik
         }
         public override string ToString()
         {
-            return base.ToString() + ";" + DopeColor.Name + ";" + Parus + ";" +
-           Flag;
+            return base.ToString() + ";" + DopeColor.Name + ";" + Parus + ";"
+                + Flag;
         }
     }
 }
