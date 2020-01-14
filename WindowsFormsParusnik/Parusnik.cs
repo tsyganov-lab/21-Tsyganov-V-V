@@ -50,16 +50,17 @@ namespace WindowsFormsParusnik
         public Color DopColor { private set; get; }
         public bool Parus { private set; get; }
         public bool Flag { private set; get; }
+        public _countParusa cParusa { private set; get; }
 
 
-
-        public Parusnik(Color mainColor, Color dopcolor, bool parus, bool flag)
+        public Parusnik(Color mainColor, Color dopcolor, bool parus, bool flag, _countParusa countparusa)
 
         {
             MainColor = mainColor;
             DopColor = dopcolor;
             Parus = parus;
             Flag = flag;
+            cParusa = countparusa;
         }
         public void SetPosition(int x, int y, int width, int height)
         {
@@ -104,6 +105,8 @@ namespace WindowsFormsParusnik
             Pen pen = new Pen(Color.Black);
             Brush br1 = new SolidBrush(DopColor);
             Brush br4 = new SolidBrush(MainColor);
+            countParusa drawParusa = new countParusa(cParusa, _startPosX, _startPosY);
+            drawParusa.ParusDraw(g);
             g.FillRectangle(br4, _startPosX + 10, _startPosY + 35, 60, 10);
             g.FillRectangle(br4, _startPosX, _startPosY + 35, 80, 7);
             g.FillRectangle(br4, _startPosX + 20, _startPosY + 35, 40, 14);
