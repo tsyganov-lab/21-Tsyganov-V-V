@@ -51,10 +51,7 @@ namespace WindowsFormsParusnik
         public bool Parus { private set; get; }
         public bool Flag { private set; get; }
 
-
-
         public Parusnik(Color mainColor, Color dopcolor, bool parus, bool flag)
-
         {
             MainColor = mainColor;
             DopColor = dopcolor;
