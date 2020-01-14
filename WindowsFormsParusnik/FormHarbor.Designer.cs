@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMVeh = new System.Windows.Forms.PictureBox();
             this.buttonSetLodka = new System.Windows.Forms.Button();
             this.buttonSetParusnik = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBoxTake = new System.Windows.Forms.PictureBox();
+            this.buttonTake = new System.Windows.Forms.Button();
+            this.labelPlace = new System.Windows.Forms.Label();
+            this.maskedTextBoxPlace = new System.Windows.Forms.MaskedTextBox();
+            this.labelTake = new System.Windows.Forms.Label();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMVeh)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // pictureBoxMVeh
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(4, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(539, 405);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxMVeh.Location = new System.Drawing.Point(4, 2);
+            this.pictureBoxMVeh.Name = "pictureBoxMVeh";
+            this.pictureBoxMVeh.Size = new System.Drawing.Size(539, 405);
+            this.pictureBoxMVeh.TabIndex = 0;
+            this.pictureBoxMVeh.TabStop = false;
             // 
             // buttonSetLodka
             // 
@@ -73,60 +73,60 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.pictureBox2);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.maskedTextBox1);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.pictureBoxTake);
+            this.groupBox1.Controls.Add(this.buttonTake);
+            this.groupBox1.Controls.Add(this.labelPlace);
+            this.groupBox1.Controls.Add(this.maskedTextBoxPlace);
+            this.groupBox1.Controls.Add(this.labelTake);
             this.groupBox1.Location = new System.Drawing.Point(549, 212);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(104, 186);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
-            // pictureBox2
+            // pictureBoxTake
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(0, 88);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(104, 98);
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
+            this.pictureBoxTake.Location = new System.Drawing.Point(0, 88);
+            this.pictureBoxTake.Name = "pictureBoxTake";
+            this.pictureBoxTake.Size = new System.Drawing.Size(104, 98);
+            this.pictureBoxTake.TabIndex = 4;
+            this.pictureBoxTake.TabStop = false;
             // 
-            // button3
+            // buttonTake
             // 
-            this.button3.Location = new System.Drawing.Point(25, 62);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(59, 21);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Забрать";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.buttonTake.Location = new System.Drawing.Point(25, 62);
+            this.buttonTake.Name = "buttonTake";
+            this.buttonTake.Size = new System.Drawing.Size(59, 21);
+            this.buttonTake.TabIndex = 3;
+            this.buttonTake.Text = "Забрать";
+            this.buttonTake.UseVisualStyleBackColor = true;
+            this.buttonTake.Click += new System.EventHandler(this.buttonTake_Click);
             // 
-            // label2
+            // labelPlace
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Место:";
+            this.labelPlace.AutoSize = true;
+            this.labelPlace.Location = new System.Drawing.Point(17, 43);
+            this.labelPlace.Name = "labelPlace";
+            this.labelPlace.Size = new System.Drawing.Size(42, 13);
+            this.labelPlace.TabIndex = 2;
+            this.labelPlace.Text = "Место:";
             // 
-            // maskedTextBox1
+            // maskedTextBoxPlace
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(62, 40);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(30, 20);
-            this.maskedTextBox1.TabIndex = 1;
+            this.maskedTextBoxPlace.Location = new System.Drawing.Point(62, 40);
+            this.maskedTextBoxPlace.Name = "maskedTextBoxPlace";
+            this.maskedTextBoxPlace.Size = new System.Drawing.Size(30, 20);
+            this.maskedTextBoxPlace.TabIndex = 1;
             // 
-            // label1
+            // labelTake
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Забрать\r\nморское т/c";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelTake.AutoSize = true;
+            this.labelTake.Location = new System.Drawing.Point(17, 11);
+            this.labelTake.Name = "labelTake";
+            this.labelTake.Size = new System.Drawing.Size(70, 26);
+            this.labelTake.TabIndex = 0;
+            this.labelTake.Text = "Забрать\r\nморское т/c";
+            this.labelTake.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // listBoxLevels
             // 
@@ -146,28 +146,28 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonSetParusnik);
             this.Controls.Add(this.buttonSetLodka);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBoxMVeh);
             this.Name = "FormHarbor";
             this.Text = "Гавань";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMVeh)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxMVeh;
         private System.Windows.Forms.Button buttonSetLodka;
         private System.Windows.Forms.Button buttonSetParusnik;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBoxTake;
+        private System.Windows.Forms.Button buttonTake;
+        private System.Windows.Forms.Label labelPlace;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxPlace;
+        private System.Windows.Forms.Label labelTake;
         private System.Windows.Forms.ListBox listBoxLevels;
     }
 }

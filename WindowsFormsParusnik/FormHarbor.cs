@@ -22,8 +22,8 @@ namespace WindowsFormsParusnik
         public FormHarbor()
         {
             InitializeComponent();
-            harbor = new MultiLevelHarbor(countLevel, pictureBox1.Width,
-                pictureBox1.Height);
+            harbor = new MultiLevelHarbor(countLevel, pictureBoxMVeh.Width,
+                pictureBoxMVeh.Height);
             //заполнение listBox
             for (int i = 0; i < countLevel; i++)
             {
@@ -38,11 +38,11 @@ namespace WindowsFormsParusnik
             if (listBoxLevels.SelectedIndex > -1)
             {//если выбран один из пуктов в listBox (при старте программы ни один пункт
              //не будет выбран и может возникнуть ошибка, если мы попытаемся обратиться к элементу listBox)
-                Bitmap bmp = new Bitmap(pictureBox1.Width,
-                    pictureBox1.Height);
+                Bitmap bmp = new Bitmap(pictureBoxMVeh.Width,
+                    pictureBoxMVeh.Height);
                 Graphics gr = Graphics.FromImage(bmp);
                 harbor[listBoxLevels.SelectedIndex].Draw(gr);
-                pictureBox1.Image = bmp;
+                pictureBoxMVeh.Image = bmp;
             }
         }
         private void buttonSetLodka_Click(object sender, EventArgs e)
@@ -86,29 +86,29 @@ namespace WindowsFormsParusnik
                 }
             }
         }
-        private void button3_Click(object sender, EventArgs e)
+        private void buttonTake_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
-                if (maskedTextBox1.Text != "")
+                if (maskedTextBoxPlace.Text != "")
                 {
                     var par = harbor[listBoxLevels.SelectedIndex] -
-                        Convert.ToInt32(maskedTextBox1.Text);
+                        Convert.ToInt32(maskedTextBoxPlace.Text);
                     if (par != null)
                     {
-                        Bitmap bmp = new Bitmap(pictureBox2.Width,
-                            pictureBox2.Height);
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width,
+                            pictureBoxTake.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        par.SetPosition(5, 5, pictureBox2.Width,
-                            pictureBox2.Height);
+                        par.SetPosition(5, 5, pictureBoxTake.Width,
+                            pictureBoxTake.Height);
                         par.DrawMVeh(gr);
-                        pictureBox2.Image = bmp;
+                        pictureBoxTake.Image = bmp;
                     }
                     else
                     {
-                        Bitmap bmp = new Bitmap(pictureBox2.Width,
-                            pictureBox2.Height);
-                        pictureBox2.Image = bmp;
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width,
+                            pictureBoxTake.Height);
+                        pictureBoxTake.Image = bmp;
                     }
                     Draw();
                 }
