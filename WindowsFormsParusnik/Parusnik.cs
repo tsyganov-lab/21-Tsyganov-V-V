@@ -13,26 +13,25 @@ namespace WindowsFormsParusnik
         Left,
         Right
     }
-
     public class Parusnik : Lodka
     {
         public bool Parus { private set; get; }
         public bool Flag { private set; get; }
+        public Color DopeColor { protected set; get; }
 
 
-
-        public Parusnik(Color mainColor, bool parus, bool flag) : base(mainColor)
+        public Parusnik(Color mainColor, Color dopeColor, bool parus, bool flag) : base(mainColor)
 
         {
+            DopeColor = dopeColor;
             Parus = parus;
             Flag = flag;
         }
 
-
         public override void DrawMVeh(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-            Brush br1 = new SolidBrush(Color.NavajoWhite);
+            Brush br1 = new SolidBrush(DopeColor);
             Brush br4 = new SolidBrush(MainColor);
             g.FillRectangle(br4, _startPosX + 40, _startPosY - 10, 5, 45);
             base.DrawMVeh(g);
