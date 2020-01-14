@@ -19,15 +19,12 @@ namespace WindowsFormsParusnik
         public bool Parus { private set; get; }
         public bool Flag { private set; get; }
 
-
-
         public Parusnik(Color mainColor, bool parus, bool flag) : base(mainColor)
 
         {
             Parus = parus;
             Flag = flag;
         }
-
 
         public override void DrawMVeh(Graphics g)
         {
@@ -47,8 +44,6 @@ namespace WindowsFormsParusnik
                 Brush br3 = new SolidBrush(Color.LightGreen);
                 g.FillRectangle(br3, _startPosX + 45, _startPosY + 7, 20, 7);
             }
-
-
         }
     }
 }
