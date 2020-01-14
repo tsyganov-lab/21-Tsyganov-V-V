@@ -28,17 +28,7 @@ namespace WindowsFormsParusnik
             Parus = parus;
             Flag = flag;
         }
-        public Parusnik(string info) : base(info)
-        {
-            string[] strs = info.Split(';');
-            if (strs.Length == 4)
-            {
-                MainColor = Color.FromName(strs[0]);
-                DopeColor = Color.FromName(strs[1]);
-                Parus = Convert.ToBoolean(strs[2]);
-                Flag = Convert.ToBoolean(strs[3]);
-            }
-        }
+
 
         public override void DrawMVeh(Graphics g)
         {
@@ -65,10 +55,7 @@ namespace WindowsFormsParusnik
         {
             DopeColor = color;
         }
-        public override string ToString()
-        {
-            return base.ToString() + ";" + DopeColor.Name + ";" + Parus + ";" +
-           Flag;
-        }
+
+
     }
 }
