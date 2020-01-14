@@ -52,6 +52,12 @@
     <Compile Include="FormHarbor.Designer.cs">
       <DependentUpon>FormHarbor.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormParConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormParConfig.Designer.cs">
+      <DependentUpon>FormParConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Harbor.cs" />
     <Compile Include="IMarineVeh.cs" />
     <Compile Include="Lodka.cs" />
@@ -68,6 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormHarbor.resx">
       <DependentUpon>FormHarbor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormParConfig.resx">
+      <DependentUpon>FormParConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WFParusnik.resx">
       <DependentUpon>WFParusnik.cs</DependentUpon>

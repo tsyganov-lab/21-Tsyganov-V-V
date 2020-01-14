@@ -13,6 +13,7 @@ namespace WindowsFormsParusnik
         Left,
         Right
     }
+
     public class Parusnik : Lodka
     {
         public bool Parus { private set; get; }
@@ -27,6 +28,7 @@ namespace WindowsFormsParusnik
             Parus = parus;
             Flag = flag;
         }
+
 
         public override void DrawMVeh(Graphics g)
         {
@@ -46,8 +48,14 @@ namespace WindowsFormsParusnik
                 Brush br3 = new SolidBrush(Color.LightGreen);
                 g.FillRectangle(br3, _startPosX + 45, _startPosY + 7, 20, 7);
             }
-
-
         }
+        /// Смена дополнительного цвета
+        /// <param name="color"></param>
+        public void SetDopColor(Color color)
+        {
+            DopeColor = color;
+        }
+
+
     }
 }
