@@ -14,7 +14,6 @@ namespace WindowsFormsParusnik
         public CountParusa Count { protected set; get; }
         private int ParusaType;
         public Parusnik(Color mainColor, bool parus, bool flag, CountParusa countparusa) : base(mainColor)
-
         {
             Parus = parus;
             Flag = flag;
