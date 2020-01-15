@@ -11,7 +11,7 @@ namespace WindowsFormsParusnik
         /// <summary>
         /// Массив объектов, которые храним
         /// </summary>
-        private T[] _places;
+        private T[] _places; 
         /// <summary>
         /// Ширина окна отрисовки
         /// </summary>
