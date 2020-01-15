@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WindowsFormsParusnik
 {
@@ -15,15 +13,6 @@ namespace WindowsFormsParusnik
         List<Harbor<IMarineVeh>> harborStages;
         private const int countPlaces = 10;
         /// <summary>
-        /// Ширина окна отрисовки
-        /// </summary>
-        private int pictureWidth;
-        /// <summary>
-        /// Высота окна отрисовки
-        /// </summary>
-        private int pictureHeight;
-
-        /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="countStages">Количество уровенй парковки</param>
@@ -32,8 +21,6 @@ namespace WindowsFormsParusnik
         public MultiLevelHarbor(int countStages, int pictureWidth, int pictureHeight)
         {
             harborStages = new List<Harbor<IMarineVeh>>();
-            this.pictureWidth = pictureWidth;
-            this.pictureHeight = pictureHeight;
             for (int i = 0; i < countStages; ++i)
             {
                 harborStages.Add(new Harbor<IMarineVeh>(countPlaces, pictureWidth,
@@ -146,6 +133,5 @@ namespace WindowsFormsParusnik
         {
             harborStages.Sort();
         }
-
     }
 }
