@@ -5,34 +5,43 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsParusnik
 {
     public partial class WFParusnik : Form
     {
-        private Parusnik par;
 
+        private IMarineVeh par;
         public WFParusnik()
         {
             InitializeComponent();
         }
         private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxMVeh.Width, pictureBoxMVeh.Height);
+            Bitmap bmp = new Bitmap(pictureBoxParusnik.Width, pictureBoxParusnik.Height);
             Graphics gr = Graphics.FromImage(bmp);
             par.DrawMVeh(gr);
-            pictureBoxMVeh.Image = bmp;
+            pictureBoxParusnik.Image = bmp;
         }
-        private void buttonCreate_Click(object sender, EventArgs e)
+
+        private void buttonCreateLodka_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            par = new Parusnik(Color.Blue, Color.Yellow, true, true);
-            par.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxMVeh.Width,
-           pictureBoxMVeh.Height);
+            par = new Lodka(Color.Brown);
+            par.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxParusnik.Width,
+                pictureBoxParusnik.Height);
             Draw();
         }
+        private void buttonCreateParusnik_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            par = new Parusnik(Color.Brown, true, true);
+            par.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxParusnik.Width,
+                pictureBoxParusnik.Height);
+            Draw();
+        }
+
         private void buttonMove_Click(object sender, EventArgs e)
         {
             //получаем имя кнопки
@@ -54,6 +63,5 @@ namespace WindowsFormsParusnik
             }
             Draw();
         }
-
     }
 }

@@ -47,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
+    <Compile Include="IMarineVeh.cs" />
+    <Compile Include="Lodka.cs" />
+    <Compile Include="MarineVeh.cs" />
     <Compile Include="WFParusnik.cs">
       <SubType>Form</SubType>
     </Compile>
