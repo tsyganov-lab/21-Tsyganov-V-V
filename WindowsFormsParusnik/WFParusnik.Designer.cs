@@ -111,6 +111,7 @@
             this.Controls.Add(this.pictureBoxMVeh);
             this.Name = "WFParusnik";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Водное т/c";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMVeh)).EndInit();
             this.ResumeLayout(false);
 
