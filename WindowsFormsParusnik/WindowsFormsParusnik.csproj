@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Anchor.cs" />
+    <Compile Include="ClassParusa.cs" />
+    <Compile Include="CountParusa.cs" />
     <Compile Include="FormHarbor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,8 +57,10 @@
     </Compile>
     <Compile Include="Harbor.cs" />
     <Compile Include="IMarineVeh.cs" />
+    <Compile Include="IParusa.cs" />
     <Compile Include="Lodka.cs" />
     <Compile Include="MarineVeh.cs" />
+    <Compile Include="ModifiedParusa.cs" />
     <Compile Include="WFParusnik.cs">
       <SubType>Form</SubType>
     </Compile>

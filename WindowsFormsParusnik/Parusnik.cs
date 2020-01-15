@@ -18,13 +18,17 @@ namespace WindowsFormsParusnik
         public bool Parus { private set; get; }
         public bool Flag { private set; get; }
         public Color DopeColor { protected set; get; }
+        public CountParusa Parusa{ private set; get; }
+        public int ParusaType;
 
-        public Parusnik(Color mainColor, Color dopeColor, bool parus, bool flag) : base(mainColor)
+        public Parusnik(Color mainColor, Color dopeColor, bool parus, bool flag, CountParusa countparusa) : base(mainColor)
 
         {
             DopeColor = dopeColor;
             Parus = parus;
             Flag = flag;
+            Parusa = countparusa;
+            ParusaType = new Random().Next(1, 4);
         }
 
         public override void DrawMVeh(Graphics g)
@@ -34,6 +38,22 @@ namespace WindowsFormsParusnik
             Brush br4 = new SolidBrush(MainColor);
             g.FillRectangle(br4, _startPosX + 40, _startPosY - 10, 5, 45);
             base.DrawMVeh(g);
+            IParusa Parusa;
+            switch (ParusaType)
+            {
+                case 1:
+                    Parusa = new Anchor(_startPosX, _startPosY);
+                    break;
+                case 2:
+                    Parusa = new ModifiedParusa(_startPosX, _startPosY);
+                    break;
+                case 3:
+                    Parusa = new ClassParusa(_startPosX, _startPosY);
+                    break;
+                default:
+                    Parusa = new ClassParusa(_startPosX, _startPosY);
+                    break;
+            }
             if (Parus)
             {
                 g.FillRectangle(br1, _startPosX + 10, _startPosY, 30, 32);
