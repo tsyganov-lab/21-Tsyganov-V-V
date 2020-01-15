@@ -8,7 +8,6 @@ namespace WindowsFormsParusnik
 {
 
     public class Parusnik : Lodka, IComparable<Parusnik>, IEquatable<Parusnik>
-
     {
         public bool Parus { private set; get; }
         public bool Flag { private set; get; }
