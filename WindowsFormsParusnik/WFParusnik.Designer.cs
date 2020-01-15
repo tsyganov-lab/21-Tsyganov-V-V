@@ -131,6 +131,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WFParusnik";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParusnik)).EndInit();
+
             this.ResumeLayout(false);
 
         }
