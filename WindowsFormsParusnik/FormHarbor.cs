@@ -11,67 +11,117 @@ namespace WindowsFormsParusnik
 {
     public partial class FormHarbor : Form
     {
-        Harbor<IMarineVeh> harbor;
+        /// <summary>
+        /// Объект от класса многоуровневой парковки
+        /// </summary>
+        MultiLevelHarbor harbor;
+        /// <summary>
+        /// Количество уровней-парковок
+        /// </summary>
+        private const int countLevel = 5;
         public FormHarbor()
         {
             InitializeComponent();
-            harbor = new Harbor<IMarineVeh>(20, pictureBoxMVeh.Width, pictureBoxMVeh.Height);
+            harbor = new MultiLevelHarbor(countLevel, pictureBoxMVeh.Width,
+                pictureBoxMVeh.Height);
+            //заполнение listBox
+            for (int i = 0; i < countLevel; i++)
+            {
+                listBoxLevels.Items.Add("Уровень " + (i + 1));
+            }
+            listBoxLevels.SelectedIndex = 0;
             Draw();
+
         }
         private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxMVeh.Width, pictureBoxMVeh.Height);
-            Graphics gr = Graphics.FromImage(bmp);
-            harbor.Draw(gr);
-            pictureBoxMVeh.Image = bmp;
+            if (listBoxLevels.SelectedIndex > -1)
+            {//если выбран один из пуктов в listBox (при старте программы ни один пункт
+             //не будет выбран и может возникнуть ошибка, если мы попытаемся обратиться к элементу listBox)
+                Bitmap bmp = new Bitmap(pictureBoxMVeh.Width,
+                    pictureBoxMVeh.Height);
+                Graphics gr = Graphics.FromImage(bmp);
+                harbor[listBoxLevels.SelectedIndex].Draw(gr);
+                pictureBoxMVeh.Image = bmp;
+            }
         }
         private void buttonSetLodka_Click(object sender, EventArgs e)
         {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (listBoxLevels.SelectedIndex > -1)
             {
-                var lodka = new Lodka(dialog.Color);
-                int place = harbor + lodka;
-                Draw();
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    var par = new Lodka(dialog.Color);
+                    int place = harbor[listBoxLevels.SelectedIndex] + par;
+                    if (place == -1)
+                    {
+                        MessageBox.Show("Нет свободных мест", "Ошибка",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    Draw();
+                }
             }
+
         }
         private void buttonSetParusnik_Click(object sender, EventArgs e)
         {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (listBoxLevels.SelectedIndex > -1)
             {
-                ColorDialog dialogDop = new ColorDialog();
-                if (dialogDop.ShowDialog() == DialogResult.OK)
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    var par = new Parusnik(dialog.Color, dialogDop.Color, true, true);
-                    int place = harbor + par;
-                    Draw();
+                    ColorDialog dialogDop = new ColorDialog();
+                    if (dialogDop.ShowDialog() == DialogResult.OK)
+                    {
+                        var par = new Parusnik(dialog.Color, dialogDop.Color, true, true);
+                        int place = harbor[listBoxLevels.SelectedIndex] + par;
+                        if (place == -1)
+                        {
+                            MessageBox.Show("Нет свободных мест", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        Draw();
+                    }
                 }
             }
         }
         private void buttonTake_Click(object sender, EventArgs e)
         {
-            if (maskedTextBoxPlace.Text != "")
+            if (listBoxLevels.SelectedIndex > -1)
             {
-                var par = harbor - Convert.ToInt32(maskedTextBoxPlace.Text);
-                if (par != null)
+                if (maskedTextBoxPlace.Text != "")
                 {
-                    Bitmap bmp = new Bitmap(pictureBoxTake.Width,
-                   pictureBoxTake.Height);
-                    Graphics gr = Graphics.FromImage(bmp);
-                    par.SetPosition(5, 5, pictureBoxTake.Width,
-                   pictureBoxTake.Height);
-                    par.DrawMVeh(gr);
-                    pictureBoxTake.Image = bmp;
+                    var par = harbor[listBoxLevels.SelectedIndex] -
+                        Convert.ToInt32(maskedTextBoxPlace.Text);
+                    if (par != null)
+                    {
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width,
+                            pictureBoxTake.Height);
+                        Graphics gr = Graphics.FromImage(bmp);
+                        par.SetPosition(5, 5, pictureBoxTake.Width,
+                            pictureBoxTake.Height);
+                        par.DrawMVeh(gr);
+                        pictureBoxTake.Image = bmp;
+                    }
+                    else
+                    {
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width,
+                            pictureBoxTake.Height);
+                        pictureBoxTake.Image = bmp;
+                    }
+                    Draw();
                 }
-                else
-                {
-                    Bitmap bmp = new Bitmap(pictureBoxTake.Width,
-                   pictureBoxTake.Height);
-                    pictureBoxTake.Image = bmp;
-                }
-                Draw();
             }
+        }
+        /// <summary>
+        /// Метод обработки выбора элемента на listBoxLevels
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Draw();
         }
 
 

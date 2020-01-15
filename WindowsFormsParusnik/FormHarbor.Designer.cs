@@ -37,6 +37,8 @@
             this.labelPlace = new System.Windows.Forms.Label();
             this.maskedTextBoxPlace = new System.Windows.Forms.MaskedTextBox();
             this.labelTake = new System.Windows.Forms.Label();
+            this.listBoxLevels = new System.Windows.Forms.ListBox();
+
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMVeh)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
@@ -46,15 +48,15 @@
             // 
             this.pictureBoxMVeh.Location = new System.Drawing.Point(4, 2);
             this.pictureBoxMVeh.Name = "pictureBoxMVeh";
-            this.pictureBoxMVeh.Size = new System.Drawing.Size(539, 301);
+            this.pictureBoxMVeh.Size = new System.Drawing.Size(539, 405);
             this.pictureBoxMVeh.TabIndex = 0;
             this.pictureBoxMVeh.TabStop = false;
             // 
             // buttonSetLodka
             // 
-            this.buttonSetLodka.Location = new System.Drawing.Point(547, 12);
+            this.buttonSetLodka.Location = new System.Drawing.Point(549, 117);
             this.buttonSetLodka.Name = "buttonSetLodka";
-            this.buttonSetLodka.Size = new System.Drawing.Size(106, 40);
+            this.buttonSetLodka.Size = new System.Drawing.Size(104, 40);
             this.buttonSetLodka.TabIndex = 1;
             this.buttonSetLodka.Text = "Пришвартовать\r\nлодку";
             this.buttonSetLodka.UseVisualStyleBackColor = true;
@@ -62,9 +64,9 @@
             // 
             // buttonSetParusnik
             // 
-            this.buttonSetParusnik.Location = new System.Drawing.Point(549, 59);
+            this.buttonSetParusnik.Location = new System.Drawing.Point(551, 164);
             this.buttonSetParusnik.Name = "buttonSetParusnik";
-            this.buttonSetParusnik.Size = new System.Drawing.Size(104, 42);
+            this.buttonSetParusnik.Size = new System.Drawing.Size(102, 42);
             this.buttonSetParusnik.TabIndex = 2;
             this.buttonSetParusnik.Text = "Пришвартовать\r\nпарусник";
             this.buttonSetParusnik.UseVisualStyleBackColor = true;
@@ -77,9 +79,9 @@
             this.groupBox1.Controls.Add(this.labelPlace);
             this.groupBox1.Controls.Add(this.maskedTextBoxPlace);
             this.groupBox1.Controls.Add(this.labelTake);
-            this.groupBox1.Location = new System.Drawing.Point(549, 131);
+            this.groupBox1.Location = new System.Drawing.Point(549, 212);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(104, 172);
+            this.groupBox1.Size = new System.Drawing.Size(104, 186);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
@@ -87,7 +89,7 @@
             // 
             this.pictureBoxTake.Location = new System.Drawing.Point(0, 88);
             this.pictureBoxTake.Name = "pictureBoxTake";
-            this.pictureBoxTake.Size = new System.Drawing.Size(104, 83);
+            this.pictureBoxTake.Size = new System.Drawing.Size(104, 98);
             this.pictureBoxTake.TabIndex = 4;
             this.pictureBoxTake.TabStop = false;
             // 
@@ -127,11 +129,21 @@
             this.labelTake.Text = "Забрать\r\nморское т/c";
             this.labelTake.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // listBoxLevels
+            // 
+            this.listBoxLevels.FormattingEnabled = true;
+            this.listBoxLevels.Location = new System.Drawing.Point(549, 3);
+            this.listBoxLevels.Name = "listBoxLevels";
+            this.listBoxLevels.Size = new System.Drawing.Size(103, 108);
+            this.listBoxLevels.TabIndex = 4;
+            this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
+            // 
             // FormHarbor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 305);
+            this.ClientSize = new System.Drawing.Size(658, 410);
+            this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonSetParusnik);
             this.Controls.Add(this.buttonSetLodka);
@@ -157,5 +169,6 @@
         private System.Windows.Forms.Label labelPlace;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxPlace;
         private System.Windows.Forms.Label labelTake;
+        private System.Windows.Forms.ListBox listBoxLevels;
     }
 }
