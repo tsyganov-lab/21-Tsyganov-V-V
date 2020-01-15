@@ -20,6 +20,7 @@ namespace WindowsFormsParusnik
             Flag = flag;
         }
 
+
         public override void DrawMVeh(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
@@ -38,6 +39,12 @@ namespace WindowsFormsParusnik
                 Brush br3 = new SolidBrush(Color.LightGreen);
                 g.FillRectangle(br3, _startPosX + 45, _startPosY + 7, 20, 7);
             }
+        }
+        /// Смена дополнительного цвета
+        /// <param name="color"></param>
+        public void SetDopColor(Color color)
+        {
+            DopeColor = color;
         }
     }
 }

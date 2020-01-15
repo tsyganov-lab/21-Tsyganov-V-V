@@ -16,6 +16,10 @@ namespace WindowsFormsParusnik
         /// </summary>
         MultiLevelHarbor harbor;
         /// <summary>
+        /// Форма для добавления
+        /// </summary>
+        FormParConfig form;
+        /// <summary>
         /// Количество уровней-парковок
         /// </summary>
         private const int countLevel = 5;
@@ -30,7 +34,6 @@ namespace WindowsFormsParusnik
                 listBoxLevels.Items.Add("Уровень " + (i + 1));
             }
             listBoxLevels.SelectedIndex = 0;
-            Draw();
 
         }
         private void Draw()
@@ -45,47 +48,21 @@ namespace WindowsFormsParusnik
                 pictureBoxMVeh.Image = bmp;
             }
         }
-        private void buttonSetLodka_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var par = new Lodka(dialog.Color);
-                    int place = harbor[listBoxLevels.SelectedIndex] + par;
-                    if (place == -1)
-                    {
-                        MessageBox.Show("Нет свободных мест", "Ошибка",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    Draw();
-                }
-            }
 
-        }
-        private void buttonSetParusnik_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Метод обработки выбора элемента на listBoxLevels
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var par = new Parusnik(dialog.Color, dialogDop.Color, true, true);
-                        int place = harbor[listBoxLevels.SelectedIndex] + par;
-                        if (place == -1)
-                        {
-                            MessageBox.Show("Нет свободных мест", "Ошибка",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        Draw();
-                    }
-                }
-            }
+            Draw();
         }
+        /// <summary>
+        /// Обработка нажатия кнопки "Забрать"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonTake_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
@@ -107,7 +84,7 @@ namespace WindowsFormsParusnik
                     else
                     {
                         Bitmap bmp = new Bitmap(pictureBoxTake.Width,
-                            pictureBoxTake.Height);
+                        pictureBoxTake.Height);
                         pictureBoxTake.Image = bmp;
                     }
                     Draw();
@@ -115,13 +92,34 @@ namespace WindowsFormsParusnik
             }
         }
         /// <summary>
-        /// Метод обработки выбора элемента на listBoxLevels
+        /// Обработка нажатия кнопки "Добавить автомобиль"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
-            Draw();
+            form = new FormParConfig();
+            form.AddEvent(AddPar);
+            form.Show();
+        }
+        /// <summary>
+        /// Метод добавления машины
+        /// </summary>
+        /// <param name="car"></param>
+        private void AddPar(IMarineVeh par)
+        {
+            if (par != null && listBoxLevels.SelectedIndex > -1)
+            {
+                int place = harbor[listBoxLevels.SelectedIndex] + par;
+                if (place > -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Т/с не удалось поставить");
+                }
+            }
         }
 
 
