@@ -6,12 +6,12 @@ using System.Drawing;
 
 namespace WindowsFormsParusnik
 {
-    public class Harbor<T,N> where T : class, IMarineVeh where N : class, IParusa
+    public class Harbor<T, N> where T : class, IMarineVeh where N : class, IParusa
     {
         /// <summary>
         /// Массив объектов, которые храним
         /// </summary>
-        private T[] _places; 
+        private T[] _places;
         /// <summary>
         /// Ширина окна отрисовки
         /// </summary>
@@ -23,11 +23,11 @@ namespace WindowsFormsParusnik
         /// <summary>
         /// Массив объектов, которые храним
         /// </summary>
-        private const int _placeSizeWidth = 180;
+        private const int _placeSizeWidth = 210;
         /// <summary>
         /// Размер парковочного места (высота)
         /// </summary>
-        private const int _placeSizeHeight = 70;
+        private const int _placeSizeHeight = 80;
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -51,15 +51,15 @@ namespace WindowsFormsParusnik
         /// <param name="p">Парковка</param>
         /// <param name="car">Добавляемый автомобиль</param>
         /// <returns></returns>
-        public static int operator +(Harbor<T,N> p, T par)
+        public static int operator +(Harbor<T, N> p, T car)
         {
             for (int i = 0; i < p._places.Length; i++)
             {
                 if (p.CheckFreePlace(i))
                 {
-                    p._places[i] = par;
-                    p._places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 15,
-                        i % 5 * _placeSizeHeight + 55, p.PictureWidth, p.PictureHeight);
+                    p._places[i] = car;
+                    p._places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 5,
+                        i % 5 * _placeSizeHeight + 15, p.PictureWidth, p.PictureHeight);
                     return i;
                 }
             }
@@ -73,7 +73,7 @@ namespace WindowsFormsParusnik
         /// <param name="index">Индекс места, с которого пытаемся извлечь
         ///объект</param>
         /// <returns></returns>
-        public static T operator -(Harbor<T,N> p, int index)
+        public static T operator -(Harbor<T, N> p, int index)
         {
             if (index < 0 || index > p._places.Length)
             {
@@ -81,11 +81,36 @@ namespace WindowsFormsParusnik
             }
             if (!p.CheckFreePlace(index))
             {
-                T par = p._places[index];
+                T car = p._places[index];
                 p._places[index] = null;
-                return par;
+                return car;
             }
             return null;
+        }
+        /// <summary>
+        /// Метод проверки заполнености парковочного места (ячейки массива)
+        /// </summary>
+        /// <param name="index">Номер парковочного места (порядковый номер в массиве)</param>
+        /// <returns></returns>
+        private bool CheckFreePlace(int index)
+        {
+            return _places[index] == null;
+        }
+
+        /// <summary>
+        /// Метод отрисовки парковки
+        /// </summary>
+        /// <param name="g"></param>
+        public void Draw(Graphics g)
+        {
+            DrawMarking(g);
+            for (int i = 0; i < _places.Length; i++)
+            {
+                if (!CheckFreePlace(i))
+                {//если место не пустое
+                    _places[i].DrawMVeh(g);
+                }
+            }
         }
         //перешвартоваться
         public static int operator +(Harbor<T, N> p, int size)
@@ -99,9 +124,8 @@ namespace WindowsFormsParusnik
                         if (p.CheckFreePlace(freeplace))
                         {
                             p._places[freeplace] = p._places[i];
-                            p._places[freeplace].SetPosition(5 + freeplace / 5 * _placeSizeWidth + 15,
-                            freeplace % 5 * _placeSizeHeight + 55, p.PictureWidth,
-                           p.PictureHeight);
+                            p._places[freeplace].SetPosition(5 + freeplace / 5 * _placeSizeWidth + 5,
+                                freeplace % 5 * _placeSizeHeight + 15, p.PictureWidth, p.PictureHeight);
                             p._places[i] = null;
                             i = freeplace;
                             freeplace = 15;
@@ -123,39 +147,19 @@ namespace WindowsFormsParusnik
             }
             return 1;
         }
-        private bool CheckFreePlace(int index)
-        {
-            return _places[index] == null;
-        }
-        /// <summary>
-        /// Метод отрисовки парковки
-        /// </summary>
-        /// <param name="g"></param>
-        public void Draw(Graphics g)
-        {
-            DrawMarking(g);
-            for (int i = 0; i < _places.Length; i++)
-            {
-                if (!CheckFreePlace(i))
-                {//если место не пустое
-                    _places[i].DrawMVeh(g);
-                }
-            }
-        }
         /// <summary>
         /// Метод отрисовки разметки парковочных мест
         /// </summary>
         /// <param name="g"></param>
         private void DrawMarking(Graphics g)
         {
-            Pen pen = new Pen(Color.Black, 3);
+            Pen pen = new Pen(Color.SaddleBrown, 10);
             //границы праковки
             g.DrawRectangle(pen, 0, 0, (_places.Length / 5) * _placeSizeWidth, 480);
             for (int i = 0; i < _places.Length / 5; i++)
             {//отрисовываем, по 5 мест на линии
                 for (int j = 0; j < 6; ++j)
-                {
-                    //линия рамзетки места
+                {//линия рамзетки места
                     g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight,
                     i * _placeSizeWidth + 110, j * _placeSizeHeight);
                 }

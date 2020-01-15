@@ -48,7 +48,7 @@
             // 
             this.pictureBoxMVeh.Location = new System.Drawing.Point(4, 2);
             this.pictureBoxMVeh.Name = "pictureBoxMVeh";
-            this.pictureBoxMVeh.Size = new System.Drawing.Size(539, 339);
+            this.pictureBoxMVeh.Size = new System.Drawing.Size(539, 383);
             this.pictureBoxMVeh.TabIndex = 0;
             this.pictureBoxMVeh.TabStop = false;
             // 
@@ -153,7 +153,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 353);
+            this.ClientSize = new System.Drawing.Size(658, 397);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonSetParusnik);
             this.Controls.Add(this.buttonSetLodka);
