@@ -6,13 +6,6 @@ using System.Drawing;
 
 namespace WindowsFormsParusnik
 {
-    public enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
 
     public class Parusnik : Lodka
     {
