@@ -11,11 +11,11 @@ namespace WindowsFormsParusnik
 {
     public partial class FormHarbor : Form
     {
-        Harbor<IMarineVeh> harbor;
+        Harbor<IMarineVeh, IParusa> harbor;
         public FormHarbor()
         {
             InitializeComponent();
-            harbor = new Harbor<IMarineVeh>(20, pictureBoxMVeh.Width, pictureBoxMVeh.Height);
+            harbor = new Harbor<IMarineVeh, IParusa>(15, pictureBoxMVeh.Width, pictureBoxMVeh.Height);
             Draw();
         }
         private void Draw()
@@ -43,7 +43,7 @@ namespace WindowsFormsParusnik
                 ColorDialog dialogDop = new ColorDialog();
                 if (dialogDop.ShowDialog() == DialogResult.OK)
                 {
-                    var par = new Parusnik(dialog.Color, dialogDop.Color, true, true);
+                    var par = new Parusnik(dialog.Color, dialogDop.Color, true, true, CountParusa.THREE);
                     int place = harbor + par;
                     Draw();
                 }
@@ -56,24 +56,31 @@ namespace WindowsFormsParusnik
                 var par = harbor - Convert.ToInt32(maskedTextBoxPlace.Text);
                 if (par != null)
                 {
-                    Bitmap bmp = new Bitmap(pictureBoxTake.Width,
-                   pictureBoxTake.Height);
+                    Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
                     Graphics gr = Graphics.FromImage(bmp);
-                    par.SetPosition(5, 5, pictureBoxTake.Width,
-                   pictureBoxTake.Height);
+                    par.SetPosition(5, 5, pictureBoxTake.Width, pictureBoxTake.Height);
                     par.DrawMVeh(gr);
                     pictureBoxTake.Image = bmp;
                 }
                 else
                 {
-                    Bitmap bmp = new Bitmap(pictureBoxTake.Width,
-                   pictureBoxTake.Height);
+                    Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
                     pictureBoxTake.Image = bmp;
                 }
                 Draw();
             }
         }
+        private void buttonNewHarbor_Click(object sender, EventArgs e)
+        {
+            int place = harbor + 15;
+            Draw();
+        }
 
+        private void buttonCleanHarbor_Click(object sender, EventArgs e)
+        {
+            int place = harbor - "15";
+            Draw();
+        }
 
     }
 }

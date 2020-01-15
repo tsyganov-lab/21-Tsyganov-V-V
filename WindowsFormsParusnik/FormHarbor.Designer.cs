@@ -37,6 +37,8 @@
             this.labelPlace = new System.Windows.Forms.Label();
             this.maskedTextBoxPlace = new System.Windows.Forms.MaskedTextBox();
             this.labelTake = new System.Windows.Forms.Label();
+            this.buttonNewHarbor = new System.Windows.Forms.Button();
+            this.buttonCleanHarbor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMVeh)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
@@ -46,13 +48,13 @@
             // 
             this.pictureBoxMVeh.Location = new System.Drawing.Point(4, 2);
             this.pictureBoxMVeh.Name = "pictureBoxMVeh";
-            this.pictureBoxMVeh.Size = new System.Drawing.Size(539, 301);
+            this.pictureBoxMVeh.Size = new System.Drawing.Size(539, 383);
             this.pictureBoxMVeh.TabIndex = 0;
             this.pictureBoxMVeh.TabStop = false;
             // 
             // buttonSetLodka
             // 
-            this.buttonSetLodka.Location = new System.Drawing.Point(547, 12);
+            this.buttonSetLodka.Location = new System.Drawing.Point(549, 2);
             this.buttonSetLodka.Name = "buttonSetLodka";
             this.buttonSetLodka.Size = new System.Drawing.Size(106, 40);
             this.buttonSetLodka.TabIndex = 1;
@@ -62,7 +64,7 @@
             // 
             // buttonSetParusnik
             // 
-            this.buttonSetParusnik.Location = new System.Drawing.Point(549, 59);
+            this.buttonSetParusnik.Location = new System.Drawing.Point(551, 42);
             this.buttonSetParusnik.Name = "buttonSetParusnik";
             this.buttonSetParusnik.Size = new System.Drawing.Size(104, 42);
             this.buttonSetParusnik.TabIndex = 2;
@@ -127,14 +129,36 @@
             this.labelTake.Text = "Забрать\r\nморское т/c";
             this.labelTake.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // buttonNewHarbor
+            // 
+            this.buttonNewHarbor.Location = new System.Drawing.Point(551, 108);
+            this.buttonNewHarbor.Name = "buttonNewHarbor";
+            this.buttonNewHarbor.Size = new System.Drawing.Size(104, 22);
+            this.buttonNewHarbor.TabIndex = 4;
+            this.buttonNewHarbor.Text = "Перепарковать";
+            this.buttonNewHarbor.UseVisualStyleBackColor = true;
+            this.buttonNewHarbor.Click += new System.EventHandler(this.buttonNewHarbor_Click);
+            // 
+            // buttonCleanHarbor
+            // 
+            this.buttonCleanHarbor.Location = new System.Drawing.Point(551, 85);
+            this.buttonCleanHarbor.Name = "buttonCleanHarbor";
+            this.buttonCleanHarbor.Size = new System.Drawing.Size(104, 22);
+            this.buttonCleanHarbor.TabIndex = 5;
+            this.buttonCleanHarbor.Text = "Очистить гавань";
+            this.buttonCleanHarbor.UseVisualStyleBackColor = true;
+            this.buttonCleanHarbor.Click += new System.EventHandler(this.buttonCleanHarbor_Click);
+            // 
             // FormHarbor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 305);
+            this.ClientSize = new System.Drawing.Size(658, 397);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonSetParusnik);
             this.Controls.Add(this.buttonSetLodka);
+            this.Controls.Add(this.buttonCleanHarbor);
+            this.Controls.Add(this.buttonNewHarbor);
             this.Controls.Add(this.pictureBoxMVeh);
             this.Name = "FormHarbor";
             this.Text = "Гавань";
@@ -157,5 +181,7 @@
         private System.Windows.Forms.Label labelPlace;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxPlace;
         private System.Windows.Forms.Label labelTake;
+        private System.Windows.Forms.Button buttonNewHarbor;
+        private System.Windows.Forms.Button buttonCleanHarbor;
     }
 }
