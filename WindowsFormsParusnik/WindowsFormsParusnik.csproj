@@ -47,6 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
+    <Compile Include="FormHarbor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHarbor.Designer.cs">
+      <DependentUpon>FormHarbor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Harbor.cs" />
     <Compile Include="IMarineVeh.cs" />
     <Compile Include="Lodka.cs" />
     <Compile Include="MarineVeh.cs" />
@@ -59,6 +66,9 @@
     <Compile Include="Parusnik.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormHarbor.resx">
+      <DependentUpon>FormHarbor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WFParusnik.resx">
       <DependentUpon>WFParusnik.cs</DependentUpon>
     </EmbeddedResource>

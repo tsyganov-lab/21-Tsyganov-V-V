@@ -16,7 +16,7 @@ namespace WindowsFormsParusnik
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WFParusnik());
+            Application.Run(new FormHarbor());
         }
     }
 }

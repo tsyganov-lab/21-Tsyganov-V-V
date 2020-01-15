@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace WindowsFormsParusnik
 {
-    interface IMarineVeh
+    public interface IMarineVeh
     {
         void SetPosition(int x, int y, int width, int height);
         void MoveMVeh(Direction direction);

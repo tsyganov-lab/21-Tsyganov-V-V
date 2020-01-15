@@ -36,7 +36,7 @@ namespace WindowsFormsParusnik
         private void buttonCreateParusnik_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            par = new Parusnik(Color.Brown, true, true);
+            par = new Parusnik(Color.Brown, Color.NavajoWhite, true, true);
             par.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxParusnik.Width,
                 pictureBoxParusnik.Height);
             Draw();
