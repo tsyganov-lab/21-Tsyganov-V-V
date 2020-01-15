@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Collections;
 
 namespace WindowsFormsParusnik
 {
@@ -12,6 +13,7 @@ namespace WindowsFormsParusnik
         /// Массив объектов, которые храним
         /// </summary>
         private Dictionary<int, T> _places;
+        private Hashtable removed;
         /// <summary>
         /// Максимальное количество мест на парковке
         /// </summary>
@@ -44,6 +46,7 @@ namespace WindowsFormsParusnik
             _places = new Dictionary<int, T>();
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
+            removed = new Hashtable();
         }
         /// <summary>
         /// Перегрузка оператора сложения
@@ -85,6 +88,9 @@ namespace WindowsFormsParusnik
             if (!p.CheckFreePlace(index))
             {
                 T par = p._places[index];
+                while (p.removed.ContainsKey(index))
+                    index = index + p._maxCount;
+                p.removed.Add(index, par);
                 p._places.Remove(index);
                 return par;
             }
@@ -100,7 +106,10 @@ namespace WindowsFormsParusnik
         {
             return !_places.ContainsKey(index);
         }
-
+        public T GetParByKey(int key)
+        {
+            return _places.ContainsKey(key) ? _places[key] : null;
+        }
         /// <summary>
         /// Метод отрисовки парковки
         /// </summary>

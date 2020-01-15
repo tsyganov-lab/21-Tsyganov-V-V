@@ -43,5 +43,16 @@ namespace WindowsFormsParusnik
                 return null;
             }
         }
+        public IMarineVeh this[int level, int key]
+        {
+            get
+            {
+                if (level > -1 && level < harborStages.Count)
+                {
+                    return harborStages[level].GetParByKey(key);
+                }
+                return null;
+            }
+        }
     }
 }
