@@ -19,7 +19,6 @@ namespace WindowsFormsParusnik
         public bool Flag { private set; get; }
         public Color DopeColor { protected set; get; }
 
-
         public Parusnik(Color mainColor, Color dopeColor, bool parus, bool flag) : base(mainColor)
 
         {
@@ -46,8 +45,6 @@ namespace WindowsFormsParusnik
                 Brush br3 = new SolidBrush(Color.LightGreen);
                 g.FillRectangle(br3, _startPosX + 45, _startPosY + 7, 20, 7);
             }
-
-
         }
     }
 }
