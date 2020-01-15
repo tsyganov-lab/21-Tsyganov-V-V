@@ -49,6 +49,7 @@
     <Compile Include="Anchor.cs" />
     <Compile Include="ClassParusa.cs" />
     <Compile Include="CountParusa.cs" />
+    <Compile Include="Direction.cs" />
     <Compile Include="FormHarbor.cs">
       <SubType>Form</SubType>
     </Compile>
