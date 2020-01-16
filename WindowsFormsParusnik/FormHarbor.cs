@@ -28,8 +28,8 @@ namespace WindowsFormsParusnik
         {
             InitializeComponent();
             logger = LogManager.GetCurrentClassLogger();
-            harbor = new MultiLevelHarbor(countLevel, pictureBox1.Width,
-                pictureBox1.Height);
+            harbor = new MultiLevelHarbor(countLevel, pictureBoxMVeh.Width,
+                pictureBoxMVeh.Height);
             //заполнение listBox
             for (int i = 0; i < countLevel; i++)
             {
@@ -43,11 +43,11 @@ namespace WindowsFormsParusnik
             if (listBoxLevels.SelectedIndex > -1)
             {//если выбран один из пуктов в listBox (при старте программы ни один пункт
              //не будет выбран и может возникнуть ошибка, если мы попытаемся обратиться к элементу listBox)
-                Bitmap bmp = new Bitmap(pictureBox1.Width,
-                    pictureBox1.Height);
+                Bitmap bmp = new Bitmap(pictureBoxMVeh.Width,
+                    pictureBoxMVeh.Height);
                 Graphics gr = Graphics.FromImage(bmp);
                 harbor[listBoxLevels.SelectedIndex].Draw(gr);
-                pictureBox1.Image = bmp;
+                pictureBoxMVeh.Image = bmp;
             }
         }
 
@@ -65,31 +65,31 @@ namespace WindowsFormsParusnik
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button3_Click(object sender, EventArgs e)
+        private void buttonTake_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
-                if (maskedTextBox1.Text != "")
+                if (maskedTextBoxPlace.Text != "")
                 {
                     try
                     {
                         var par = harbor[listBoxLevels.SelectedIndex] -
-                            Convert.ToInt32(maskedTextBox1.Text);
-                        Bitmap bmp = new Bitmap(pictureBox2.Width, pictureBox2.Height);
+                            Convert.ToInt32(maskedTextBoxPlace.Text);
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        par.SetPosition(5, 5, pictureBox2.Width, pictureBox2.Height);
+                        par.SetPosition(5, 5, pictureBoxTake.Width, pictureBoxTake.Height);
                         par.DrawMVeh(gr);
-                        pictureBox2.Image = bmp;
-                        logger.Info("Изъято водное т/с с места " + maskedTextBox1.Text);
+                        pictureBoxTake.Image = bmp;
+                        logger.Info("Изъято водное т/с с места " + maskedTextBoxPlace.Text);
                         Draw();
                     }
                     catch (HarborNorFoundException ex)
                     {
                         MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
-                        Bitmap bmp = new Bitmap(pictureBox2.Width, pictureBox2.Height);
-                        pictureBox2.Image = bmp;
-                        logger.Debug("Не найдено водное т/с на месте " + maskedTextBox1.Text);
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
+                        pictureBoxTake.Image = bmp;
+                        logger.Debug("Не найдено водное т/с на месте " + maskedTextBoxPlace.Text);
                     }
                     catch (Exception ex)
                     {
@@ -106,7 +106,7 @@ namespace WindowsFormsParusnik
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
             form = new FormParConfig();
             form.AddEvent(AddPar);
@@ -202,7 +202,7 @@ namespace WindowsFormsParusnik
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonSort_Click(object sender, EventArgs e)
         {
             harbor.Sort();
             Draw();
