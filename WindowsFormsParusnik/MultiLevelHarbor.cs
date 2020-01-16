@@ -24,6 +24,15 @@ namespace WindowsFormsParusnik
         private int pictureHeight;
 
         /// <summary>
+        /// Ширина окна отрисовки
+        /// </summary>
+        private int pictureWidth;
+        /// <summary>
+        /// Высота окна отрисовки
+        /// </summary>
+        private int pictureHeight;
+
+        /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="countStages">Количество уровенй парковки</param>

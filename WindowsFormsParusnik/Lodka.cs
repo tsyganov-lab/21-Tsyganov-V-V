@@ -118,6 +118,5 @@ namespace WindowsFormsParusnik
         {
             return base.GetHashCode();
         }
-
     }
 }

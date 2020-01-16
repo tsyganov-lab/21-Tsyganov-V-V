@@ -172,7 +172,6 @@ namespace WindowsFormsParusnik
             }
 
         }
-
         private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -201,12 +200,12 @@ namespace WindowsFormsParusnik
             }
 
         }
-
         private void buttonSort_Click(object sender, EventArgs e)
         {
             harbor.Sort();
             Draw();
             logger.Info("Сортировка уровней");
+
 
         }
     }
