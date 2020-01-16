@@ -6,6 +6,7 @@ using System.Drawing;
 
 namespace WindowsFormsParusnik
 {
+
     public class Parusnik : Lodka
     {
         public bool Parus { private set; get; }
@@ -39,6 +40,8 @@ namespace WindowsFormsParusnik
             Brush br4 = new SolidBrush(MainColor);
             g.FillRectangle(br4, _startPosX + 40, _startPosY - 10, 5, 45);
             base.DrawMVeh(g);
+            /*countParusa drawParusa = new countParusa(Parusa, _startPosX, _startPosY);
+            drawParusa.ParusDraw(g);*/
             if (Parus)
             {
                 g.FillRectangle(br1, _startPosX + 10, _startPosY, 30, 32);
