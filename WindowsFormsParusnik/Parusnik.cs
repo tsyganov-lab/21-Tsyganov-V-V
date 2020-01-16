@@ -6,6 +6,7 @@ using System.Drawing;
 
 namespace WindowsFormsParusnik
 {
+
     public class Parusnik : Lodka
     {
         public bool Parus { private set; get; }
