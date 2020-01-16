@@ -6,13 +6,12 @@ using System.Drawing;
 
 namespace WindowsFormsParusnik
 {
-
-
     public class Parusnik : Lodka
     {
         public bool Parus { private set; get; }
         public bool Flag { private set; get; }
         public Color DopeColor { protected set; get; }
+
 
         public Parusnik(Color mainColor, Color dopeColor, bool parus, bool flag) : base(mainColor)
 
@@ -21,7 +20,17 @@ namespace WindowsFormsParusnik
             Parus = parus;
             Flag = flag;
         }
-
+        public Parusnik(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 4)
+            {
+                MainColor = Color.FromName(strs[0]);
+                DopeColor = Color.FromName(strs[1]);
+                Parus = Convert.ToBoolean(strs[2]);
+                Flag = Convert.ToBoolean(strs[3]);
+            }
+        }
 
         public override void DrawMVeh(Graphics g)
         {
@@ -30,6 +39,8 @@ namespace WindowsFormsParusnik
             Brush br4 = new SolidBrush(MainColor);
             g.FillRectangle(br4, _startPosX + 40, _startPosY - 10, 5, 45);
             base.DrawMVeh(g);
+            /*countParusa drawParusa = new countParusa(Parusa, _startPosX, _startPosY);
+            drawParusa.ParusDraw(g);*/
             if (Parus)
             {
                 g.FillRectangle(br1, _startPosX + 10, _startPosY, 30, 32);
@@ -50,8 +61,8 @@ namespace WindowsFormsParusnik
         }
         public override string ToString()
         {
-            return base.ToString() + ";" + DopeColor.Name + ";" + Parus + ";"
-                + Flag;
+            return base.ToString() + ";" + DopeColor.Name + ";" + Parus + ";" +
+           Flag;
         }
     }
 }

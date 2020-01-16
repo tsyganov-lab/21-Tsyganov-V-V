@@ -26,8 +26,8 @@ namespace WindowsFormsParusnik
         public FormHarbor()
         {
             InitializeComponent();
-            harbor = new MultiLevelHarbor(countLevel, pictureBoxMVeh.Width,
-                pictureBoxMVeh.Height);
+            harbor = new MultiLevelHarbor(countLevel, pictureBox1.Width,
+                pictureBox1.Height);
             //заполнение listBox
             for (int i = 0; i < countLevel; i++)
             {
@@ -41,11 +41,11 @@ namespace WindowsFormsParusnik
             if (listBoxLevels.SelectedIndex > -1)
             {//если выбран один из пуктов в listBox (при старте программы ни один пункт
              //не будет выбран и может возникнуть ошибка, если мы попытаемся обратиться к элементу listBox)
-                Bitmap bmp = new Bitmap(pictureBoxMVeh.Width,
-                    pictureBoxMVeh.Height);
+                Bitmap bmp = new Bitmap(pictureBox1.Width,
+                    pictureBox1.Height);
                 Graphics gr = Graphics.FromImage(bmp);
                 harbor[listBoxLevels.SelectedIndex].Draw(gr);
-                pictureBoxMVeh.Image = bmp;
+                pictureBox1.Image = bmp;
             }
         }
 
@@ -63,29 +63,29 @@ namespace WindowsFormsParusnik
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonTake_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
-                if (maskedTextBoxPlace.Text != "")
+                if (maskedTextBox1.Text != "")
                 {
                     var par = harbor[listBoxLevels.SelectedIndex] -
-                        Convert.ToInt32(maskedTextBoxPlace.Text);
+                        Convert.ToInt32(maskedTextBox1.Text);
                     if (par != null)
                     {
-                        Bitmap bmp = new Bitmap(pictureBoxTake.Width,
-                            pictureBoxTake.Height);
+                        Bitmap bmp = new Bitmap(pictureBox2.Width,
+                            pictureBox2.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        par.SetPosition(5, 5, pictureBoxTake.Width,
-                            pictureBoxTake.Height);
+                        par.SetPosition(5, 5, pictureBox2.Width,
+                            pictureBox2.Height);
                         par.DrawMVeh(gr);
-                        pictureBoxTake.Image = bmp;
+                        pictureBox2.Image = bmp;
                     }
                     else
                     {
-                        Bitmap bmp = new Bitmap(pictureBoxTake.Width,
-                        pictureBoxTake.Height);
-                        pictureBoxTake.Image = bmp;
+                        Bitmap bmp = new Bitmap(pictureBox2.Width,
+                        pictureBox2.Height);
+                        pictureBox2.Image = bmp;
                     }
                     Draw();
                 }
@@ -96,7 +96,7 @@ namespace WindowsFormsParusnik
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             form = new FormParConfig();
             form.AddEvent(AddPar);
@@ -122,6 +122,41 @@ namespace WindowsFormsParusnik
             }
         }
 
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (harbor.SaveData(saveFileDialog1.FileName))
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Результат",
+                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не сохранилось", "Результат",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
+        }
+
+        private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (harbor.LoadData(openFileDialog1.FileName))
+                {
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+                Draw();
+            }
+
+        }
     }
 }
