@@ -8,10 +8,12 @@ namespace WindowsFormsParusnik
 {
 
     public class Parusnik : Lodka, IComparable<Parusnik>, IEquatable<Parusnik>
+
     {
         public bool Parus { private set; get; }
         public bool Flag { private set; get; }
         public Color DopeColor { protected set; get; }
+
 
         public Parusnik(Color mainColor, Color dopeColor, bool parus, bool flag) : base(mainColor)
 
@@ -20,7 +22,17 @@ namespace WindowsFormsParusnik
             Parus = parus;
             Flag = flag;
         }
-
+        public Parusnik(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 4)
+            {
+                MainColor = Color.FromName(strs[0]);
+                DopeColor = Color.FromName(strs[1]);
+                Parus = Convert.ToBoolean(strs[2]);
+                Flag = Convert.ToBoolean(strs[3]);
+            }
+        }
 
         public override void DrawMVeh(Graphics g)
         {
@@ -49,8 +61,8 @@ namespace WindowsFormsParusnik
         }
         public override string ToString()
         {
-            return base.ToString() + ";" + DopeColor.Name + ";" + Parus + ";"
-                + Flag;
+            return base.ToString() + ";" + DopeColor.Name + ";" + Parus + ";" +
+           Flag;
         }
         public int CompareTo(Parusnik other)
         {

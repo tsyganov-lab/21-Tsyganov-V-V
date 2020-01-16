@@ -14,6 +14,15 @@ namespace WindowsFormsParusnik
         {
             MainColor = mainColor;
         }
+        public Lodka(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 1)
+            {
+                MainColor = Color.FromName(strs[0]);
+            }
+        }
+
         public override void MoveMVeh(Direction direction)
         {
             float step = 12;
@@ -109,5 +118,6 @@ namespace WindowsFormsParusnik
         {
             return base.GetHashCode();
         }
+
     }
 }
