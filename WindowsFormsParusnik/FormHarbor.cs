@@ -28,8 +28,8 @@ namespace WindowsFormsParusnik
         {
             InitializeComponent();
             logger = LogManager.GetCurrentClassLogger();
-            harbor = new MultiLevelHarbor(countLevel, pictureBoxMVeh.Width,
-                pictureBoxMVeh.Height);
+            harbor = new MultiLevelHarbor(countLevel, pictureBox1.Width,
+                pictureBox1.Height);
             //заполнение listBox
             for (int i = 0; i < countLevel; i++)
             {
@@ -43,11 +43,11 @@ namespace WindowsFormsParusnik
             if (listBoxLevels.SelectedIndex > -1)
             {//если выбран один из пуктов в listBox (при старте программы ни один пункт
              //не будет выбран и может возникнуть ошибка, если мы попытаемся обратиться к элементу listBox)
-                Bitmap bmp = new Bitmap(pictureBoxMVeh.Width,
-                    pictureBoxMVeh.Height);
+                Bitmap bmp = new Bitmap(pictureBox1.Width,
+                    pictureBox1.Height);
                 Graphics gr = Graphics.FromImage(bmp);
                 harbor[listBoxLevels.SelectedIndex].Draw(gr);
-                pictureBoxMVeh.Image = bmp;
+                pictureBox1.Image = bmp;
             }
         }
 
@@ -65,31 +65,31 @@ namespace WindowsFormsParusnik
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonTake_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
-                if (maskedTextBoxPlace.Text != "")
+                if (maskedTextBox1.Text != "")
                 {
                     try
                     {
                         var par = harbor[listBoxLevels.SelectedIndex] -
-                            Convert.ToInt32(maskedTextBoxPlace.Text);
-                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
+                            Convert.ToInt32(maskedTextBox1.Text);
+                        Bitmap bmp = new Bitmap(pictureBox2.Width, pictureBox2.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        par.SetPosition(5, 5, pictureBoxTake.Width, pictureBoxTake.Height);
+                        par.SetPosition(5, 5, pictureBox2.Width, pictureBox2.Height);
                         par.DrawMVeh(gr);
-                        pictureBoxTake.Image = bmp;
-                        logger.Info("Изъято водное т/с с места " + maskedTextBoxPlace.Text);
+                        pictureBox2.Image = bmp;
+                        logger.Info("Изъято водное т/с с места " + maskedTextBox1.Text);
                         Draw();
                     }
                     catch (HarborNorFoundException ex)
                     {
                         MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
-                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
-                        pictureBoxTake.Image = bmp;
-                        logger.Debug("Не найдено водное т/с на месте " + maskedTextBoxPlace.Text);
+                        Bitmap bmp = new Bitmap(pictureBox2.Width, pictureBox2.Height);
+                        pictureBox2.Image = bmp;
+                        logger.Debug("Не найдено водное т/с на месте " + maskedTextBox1.Text);
                     }
                     catch (Exception ex)
                     {
@@ -106,7 +106,7 @@ namespace WindowsFormsParusnik
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             form = new FormParConfig();
             form.AddEvent(AddPar);
