@@ -6,13 +6,6 @@ using System.Drawing;
 
 namespace WindowsFormsParusnik
 {
-    public enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
 
     public class Parusnik : Lodka
     {
@@ -26,6 +19,17 @@ namespace WindowsFormsParusnik
             DopeColor = dopeColor;
             Parus = parus;
             Flag = flag;
+        }
+        public Parusnik(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 4)
+            {
+                MainColor = Color.FromName(strs[0]);
+                DopeColor = Color.FromName(strs[1]);
+                Parus = Convert.ToBoolean(strs[2]);
+                Flag = Convert.ToBoolean(strs[3]);
+            }
         }
 
 

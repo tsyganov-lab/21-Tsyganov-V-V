@@ -14,6 +14,14 @@ namespace WindowsFormsParusnik
         {
             MainColor = mainColor;
         }
+        public Lodka(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 1)
+            {
+                MainColor = Color.FromName(strs[0]);
+            }
+        }
         public override void MoveMVeh(Direction direction)
         {
             float step = 12;
@@ -53,6 +61,10 @@ namespace WindowsFormsParusnik
             g.FillRectangle(br, _startPosX, _startPosY + 35, 80, 7);
             g.FillRectangle(br, _startPosX + 20, _startPosY + 35, 40, 14);
 
+        }
+        public override string ToString()
+        {
+            return MainColor.Name;
         }
     }
 }

@@ -121,7 +121,42 @@ namespace WindowsFormsParusnik
                 }
             }
         }
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (harbor.SaveData(saveFile.FileName))
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Результат",
+                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не сохранилось", "Результат",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
+        }
+
+        private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (harbor.LoadData(openFile.FileName))
+                {
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+                Draw();
+            }
+
+        }
 
     }
 }
