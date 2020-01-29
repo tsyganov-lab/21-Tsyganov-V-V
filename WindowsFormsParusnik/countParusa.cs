@@ -7,12 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsParusnik
 {
-    public enum _countParusa
-    {
-        One,
-        Two,
-        Three
-    }
+    
     public class countParusa
     {
         public _countParusa parusCount { private get; set; }
