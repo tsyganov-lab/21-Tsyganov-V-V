@@ -12,7 +12,7 @@ namespace WindowsFormsParusnik
         /// Список с уровнями парковки
         /// </summary>
         List<Harbor<IMarineVeh>> harborStages;
-        private const int countPlaces = 20;
+        private const int countPlaces = 10;
         /// <summary>
         /// Ширина окна отрисовки
         /// </summary>
@@ -21,6 +21,7 @@ namespace WindowsFormsParusnik
         /// Высота окна отрисовки
         /// </summary>
         private int pictureHeight;
+
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -54,7 +55,7 @@ namespace WindowsFormsParusnik
                 return null;
             }
         }
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -65,32 +66,28 @@ namespace WindowsFormsParusnik
                 sw.WriteLine("CountLevels:" + harborStages.Count);
                 foreach (var level in harborStages)
                 {
+
                     sw.WriteLine("Level");
-                    for (int i = 0; i < countPlaces; i++)
+                    foreach (IMarineVeh par in level)
                     {
-                        var ship = level[i];
-                        if (ship != null)
+                        //Записываем тип мшаины
+                        if (par.GetType().Name == "Lodka")
                         {
-                            if (ship.GetType().Name == "Lodka")
-                            {
-                                sw.WriteLine(i + ":Lodka:" + ship);
-                            }
-                            if (ship.GetType().Name == "Parusnik")
-                            {
-                                sw.WriteLine(i + ":Parusnik:" + ship);
-                            }
+                            sw.WriteLine(":Lodka:" + par);
+                        }
+                        if (par.GetType().Name == "Parusnik")
+                        {
+                            sw.WriteLine(":Parusnik:" + par);
                         }
                     }
                 }
             }
-            return true;
         }
-
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             int counter = -1;
             IMarineVeh par = null;
@@ -110,7 +107,8 @@ namespace WindowsFormsParusnik
                 }
                 else
                 {
-                    return false;
+                    //если нет такой записи, то это не те данные
+                    throw new Exception("Неверный формат файла");
                 }
                 while ((line = sr.ReadLine()) != null)
                 {
@@ -138,8 +136,14 @@ namespace WindowsFormsParusnik
                         harborStages[counter][Convert.ToInt32(splitLine[0])] = par;
                     }
                 }
-                return true;
             }
+        }
+        /// <summary>
+        /// Сортировка уровней
+        /// </summary>
+        public void Sort()
+        {
+            harborStages.Sort();
         }
     }
 }

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Collections;
 
 namespace WindowsFormsParusnik
 {
-    public class Harbor<T> where T : class, IMarineVeh
+    public class Harbor<T> : IEnumerator<T>, IEnumerable<T>, IComparable<Harbor<T>>
+        where T : class, IMarineVeh
     {
         /// <summary>
         /// Массив объектов, которые храним
@@ -33,6 +35,20 @@ namespace WindowsFormsParusnik
         /// </summary>
         private const int _placeSizeHeight = 80;
         /// <summary>
+        /// Текущий элемент для вывода через IEnumerator (будет обращаться по своему индексу к ключу словаря, по которму будет возвращаться запись)
+        /// </summary>
+        private int _currentIndex;
+        /// <summary>
+        /// Получить порядковое место на парковке
+        /// </summary>
+        public int GetKey
+        {
+            get
+            {
+                return _places.Keys.ToList()[_currentIndex];
+            }
+        }
+        /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="sizes">Количество мест на парковке</param>
@@ -42,6 +58,7 @@ namespace WindowsFormsParusnik
         {
             _maxCount = sizes;
             _places = new Dictionary<int, T>();
+            _currentIndex = -1;
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
         }
@@ -57,6 +74,10 @@ namespace WindowsFormsParusnik
             if (p._places.Count == p._maxCount)
             {
                 throw new HarborOverflowException();
+            }
+            if (p._places.ContainsValue(par))
+            {
+                throw new HarborAlreadyHaveException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -107,10 +128,9 @@ namespace WindowsFormsParusnik
         public void Draw(Graphics g)
         {
             DrawMarking(g);
-            var keys = _places.Keys.ToList();
-            for (int i = 0; i < keys.Count; i++)
+            foreach (var car in _places)
             {
-                _places[keys[i]].DrawMVeh(g);
+                car.Value.DrawMVeh(g);
             }
 
         }
@@ -159,6 +179,111 @@ namespace WindowsFormsParusnik
                 }
 
             }
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerator для получения текущего элемента
+        /// </summary>
+        public T Current
+        {
+            get
+            {
+                return _places[_places.Keys.ToList()[_currentIndex]];
+            }
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerator для получения текущего элемента
+        /// </summary>
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerator, вызываемый при удалении объекта
+        /// </summary>
+        public void Dispose()
+        {
+            _places.Clear();
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerator для перехода к следующему элементу или началу коллекции
+        /// </summary>
+        /// <returns></returns>
+        public bool MoveNext()
+        {
+            if (_currentIndex + 1 >= _places.Count)
+            {
+                Reset();
+                return false;
+            }
+            _currentIndex++;
+            return true;
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerator для сброса и возврата к началу коллекции
+        /// </summary>
+        public void Reset()
+        {
+            _currentIndex = -1;
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerable
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerable
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+        /// <summary>
+        /// Метод интерфейса IComparable
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public int CompareTo(Harbor<T> other)
+        {
+            if (_places.Count > other._places.Count)
+            {
+                return -1;
+            }
+            else if (_places.Count < other._places.Count)
+            {
+                return 1;
+            }
+            else if (_places.Count > 0)
+            {
+                var thisKeys = _places.Keys.ToList();
+                var otherKeys = other._places.Keys.ToList();
+                for (int i = 0; i < _places.Count; ++i)
+                {
+                    if (_places[thisKeys[i]] is Lodka && other._places[thisKeys[i]] is Parusnik)
+                    {
+                        return 1;
+                    }
+                    if (_places[thisKeys[i]] is Parusnik && other._places[thisKeys[i]] is Lodka)
+                    {
+                        return -1;
+                    }
+                    if (_places[thisKeys[i]] is Lodka && other._places[thisKeys[i]] is Lodka)
+                    {
+                        return (_places[thisKeys[i]] is Lodka).CompareTo(other._places[thisKeys[i]] is Lodka);
+                    }
+                    if (_places[thisKeys[i]] is Parusnik && other._places[thisKeys[i]] is Parusnik)
+                    {
+                        return (_places[thisKeys[i]] is Parusnik).CompareTo(other._places[thisKeys[i]] is Parusnik);
+                    }
+                }
+            }
+            return 0;
         }
 
     }

@@ -7,7 +7,8 @@ using System.Drawing;
 namespace WindowsFormsParusnik
 {
 
-    public class Parusnik : Lodka
+    public class Parusnik : Lodka, IComparable<Parusnik>, IEquatable<Parusnik>
+
     {
         public bool Parus { private set; get; }
         public bool Flag { private set; get; }
@@ -64,5 +65,64 @@ namespace WindowsFormsParusnik
             return base.ToString() + ";" + DopeColor.Name + ";" + Parus + ";"
                 + Flag;
         }
+        public int CompareTo(Parusnik other)
+        {
+            var res = (this is Lodka).CompareTo(other is Lodka);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopeColor != other.DopeColor)
+            {
+                DopeColor.Name.CompareTo(other.DopeColor.Name);
+            }
+            return 0;
+        }
+        public bool Equals(Parusnik other)
+        {
+            var res = (this as Lodka).Equals(other as Lodka);
+            if (!res)
+            {
+                return res;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (DopeColor != other.DopeColor)
+            {
+                return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// Перегрузка метода от object
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is Parusnik carObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(carObj);
+            }
+        }
+        /// <summary>
+        /// Перегрузка метода от object
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
     }
 }

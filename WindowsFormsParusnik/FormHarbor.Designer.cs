@@ -44,6 +44,7 @@ namespace WindowsFormsParusnik
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFile = new System.Windows.Forms.OpenFileDialog();
             this.saveFile = new System.Windows.Forms.SaveFileDialog();
+            this.buttonSort = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMVeh)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
@@ -126,7 +127,7 @@ namespace WindowsFormsParusnik
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(558, 127);
+            this.buttonAdd.Location = new System.Drawing.Point(559, 122);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(82, 52);
             this.buttonAdd.TabIndex = 5;
@@ -169,6 +170,7 @@ namespace WindowsFormsParusnik
             // 
             // openFile
             // 
+
             this.openFile.FileName = "saveResult";
             this.openFile.Filter = "txt file | *.txt";
             // 
@@ -176,11 +178,22 @@ namespace WindowsFormsParusnik
             // 
             this.saveFile.Filter = "txt file | *.txt";
             // 
+            // buttonSort
+            // 
+            this.buttonSort.Location = new System.Drawing.Point(559, 182);
+            this.buttonSort.Name = "buttonSort";
+            this.buttonSort.Size = new System.Drawing.Size(82, 24);
+            this.buttonSort.TabIndex = 7;
+            this.buttonSort.Text = "Сортировать\r\n";
+            this.buttonSort.UseVisualStyleBackColor = true;
+            this.buttonSort.Click += new System.EventHandler(this.buttonSort_Click);
+            // 
             // FormHarbor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 433);
+            this.Controls.Add(this.buttonSort);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBox1);
@@ -218,5 +231,6 @@ namespace WindowsFormsParusnik
         private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFile;
         private System.Windows.Forms.SaveFileDialog saveFile;
+        private System.Windows.Forms.Button buttonSort;
     }
 }

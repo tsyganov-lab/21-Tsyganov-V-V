@@ -74,6 +74,7 @@
       <DependentUpon>FormParConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Harbor.cs" />
+    <Compile Include="HarborAlreadyHaveException.cs" />
     <Compile Include="HarborNorFoundException.cs" />
     <Compile Include="HarborOccupiedPlaceException.cs" />
     <Compile Include="HarborOverflowException.cs" />

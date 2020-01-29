@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace WindowsFormsParusnik
 {
-    public class Lodka : MarineVeh
+    public class Lodka : MarineVeh, IComparable<Lodka>, IEquatable<Lodka>
     {
         protected const int parWidth = 100;
         protected const int parHeight = 60;
@@ -66,6 +66,57 @@ namespace WindowsFormsParusnik
         public override string ToString()
         {
             return MainColor.Name;
+        }
+        public int CompareTo(Lodka other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (MainColor != other.MainColor)
+            {
+                MainColor.Name.CompareTo(other.MainColor.Name);
+            }
+            return 0;
+        }
+        public bool Equals(Lodka other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            return true;
+        }
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is Lodka carObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(carObj);
+            }
+        }
+        /// <summary>
+        /// Перегрузка метода от object
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

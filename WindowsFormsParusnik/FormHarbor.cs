@@ -134,6 +134,13 @@ namespace WindowsFormsParusnik
                         MessageBoxIcon.Error);
                     logger.Debug("Ошибка при добавлении т/c, место занято ");
                 }
+                catch (HarborAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    logger.Debug("Ошибка: такое водное т/c уже есть в гавани");
+                }
+
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка",
@@ -194,6 +201,13 @@ namespace WindowsFormsParusnik
             }
 
         }
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            harbor.Sort();
+            Draw();
+            logger.Info("Сортировка уровней");
 
+
+        }
     }
 }
