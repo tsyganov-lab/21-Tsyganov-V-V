@@ -85,6 +85,7 @@ namespace WindowsFormsParusnik
             }
             return true;
         }
+
         public bool LoadData(string filename)
         {
             if (!File.Exists(filename))

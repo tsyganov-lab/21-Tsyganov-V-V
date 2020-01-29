@@ -22,6 +22,7 @@ namespace WindowsFormsParusnik
                 MainColor = Color.FromName(strs[0]);
             }
         }
+
         public override void MoveMVeh(Direction direction)
         {
             float step = 12;

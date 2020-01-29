@@ -20,6 +20,7 @@ namespace WindowsFormsParusnik
             Parus = parus;
             Flag = flag;
         }
+
         public Parusnik(string info) : base(info)
         {
             string[] strs = info.Split(';');

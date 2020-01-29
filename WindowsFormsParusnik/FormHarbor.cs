@@ -121,6 +121,7 @@ namespace WindowsFormsParusnik
                 }
             }
         }
+
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
