@@ -23,14 +23,6 @@ namespace WindowsFormsParusnik
         /// </summary>
         private int pictureHeight;
 
-        /// <summary>
-        /// Ширина окна отрисовки
-        /// </summary>
-        private int pictureWidth;
-        /// <summary>
-        /// Высота окна отрисовки
-        /// </summary>
-        private int pictureHeight;
 
         /// <summary>
         /// Конструктор
