@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WindowsFormsParusnik
 {
@@ -22,7 +21,6 @@ namespace WindowsFormsParusnik
         /// Высота окна отрисовки
         /// </summary>
         private int pictureHeight;
-
 
         /// <summary>
         /// Конструктор
@@ -147,6 +145,5 @@ namespace WindowsFormsParusnik
         {
             harborStages.Sort();
         }
-
     }
 }
