@@ -147,14 +147,14 @@ namespace WindowsFormsParusnik
 
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (saveFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 try
                 {
-                    harbor.SaveData(saveFileDialog1.FileName);
+                    harbor.SaveData(saveFile.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    logger.Info("Сохранено в файл " + saveFileDialog1.FileName);
+                    logger.Info("Сохранено в файл " + saveFile.FileName);
                 }
                 catch (Exception ex)
                 {
@@ -168,14 +168,14 @@ namespace WindowsFormsParusnik
         }
         private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFile.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    harbor.LoadData(openFileDialog1.FileName);
+                    harbor.LoadData(openFile.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-                    logger.Info("Загружено из файла " + openFileDialog1.FileName);
+                    logger.Info("Загружено из файла " + openFile.FileName);
                 }
                 catch (HarborOccupiedPlaceException ex)
                 {
