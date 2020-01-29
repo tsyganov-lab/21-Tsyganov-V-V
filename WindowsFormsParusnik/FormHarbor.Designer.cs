@@ -54,7 +54,7 @@ namespace WindowsFormsParusnik
             // 
             this.pictureBoxMVeh.Location = new System.Drawing.Point(4, 27);
             this.pictureBoxMVeh.Name = "pictureBoxMVeh";
-            this.pictureBoxMVeh.Size = new System.Drawing.Size(539, 380);
+            this.pictureBoxMVeh.Size = new System.Drawing.Size(539, 394);
             this.pictureBoxMVeh.TabIndex = 0;
             this.pictureBoxMVeh.TabStop = false;
             // 
@@ -180,7 +180,7 @@ namespace WindowsFormsParusnik
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 410);
+            this.ClientSize = new System.Drawing.Size(658, 433);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBox1);
