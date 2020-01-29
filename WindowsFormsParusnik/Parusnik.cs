@@ -13,7 +13,6 @@ namespace WindowsFormsParusnik
         public bool Flag { private set; get; }
         public Color DopeColor { protected set; get; }
 
-
         public Parusnik(Color mainColor, Color dopeColor, bool parus, bool flag) : base(mainColor)
 
         {
@@ -21,6 +20,7 @@ namespace WindowsFormsParusnik
             Parus = parus;
             Flag = flag;
         }
+
         public Parusnik(string info) : base(info)
         {
             string[] strs = info.Split(';');
@@ -33,6 +33,7 @@ namespace WindowsFormsParusnik
             }
         }
 
+
         public override void DrawMVeh(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
@@ -40,8 +41,6 @@ namespace WindowsFormsParusnik
             Brush br4 = new SolidBrush(MainColor);
             g.FillRectangle(br4, _startPosX + 40, _startPosY - 10, 5, 45);
             base.DrawMVeh(g);
-            /*countParusa drawParusa = new countParusa(Parusa, _startPosX, _startPosY);
-            drawParusa.ParusDraw(g);*/
             if (Parus)
             {
                 g.FillRectangle(br1, _startPosX + 10, _startPosY, 30, 32);
@@ -62,8 +61,8 @@ namespace WindowsFormsParusnik
         }
         public override string ToString()
         {
-            return base.ToString() + ";" + DopeColor.Name + ";" + Parus + ";" +
-           Flag;
+            return base.ToString() + ";" + DopeColor.Name + ";" + Parus + ";"
+                + Flag;
         }
     }
 }

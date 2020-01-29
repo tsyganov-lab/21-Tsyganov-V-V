@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WindowsFormsParusnik
 {
@@ -22,7 +21,6 @@ namespace WindowsFormsParusnik
         /// Высота окна отрисовки
         /// </summary>
         private int pictureHeight;
-
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -87,11 +85,7 @@ namespace WindowsFormsParusnik
             }
             return true;
         }
-        private void WriteToFile(string text, FileStream stream)
-        {
-            byte[] info = new UTF8Encoding(true).GetBytes(text);
-            stream.Write(info, 0, info.Length);
-        }
+
         public bool LoadData(string filename)
         {
             if (!File.Exists(filename))
@@ -147,6 +141,5 @@ namespace WindowsFormsParusnik
                 return true;
             }
         }
-
     }
 }
